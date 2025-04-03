@@ -1,0 +1,199 @@
+
+.kriscart-widget .d-none {
+  display: none;
+}
+.kriscart-widget .mb-2 {
+  margin-bottom: .75rem!important;
+}
+.kriscart-widget .mb-3 {
+  margin-bottom: 1rem!important;
+}
+.kriscart-widget .mb-4 {
+  margin-bottom: 1.5rem!important;
+}
+.kriscart-widget .mt-3 {
+  margin-top: 1rem!important;
+}
+.kriscart-widget .mt-4 {
+  margin-top: 1.5rem!important;
+}
+.kriscart-widget .mt-5 {
+  margin-top: 2rem!important;
+}
+.kriscart-widget .mt-6 {
+  margin-top: 2.5rem!important;
+}
+.kriscart-widget .ml-4 {
+  margin-left: 1.5rem!important;
+}
+
+.kriscart-widget .pl-3 {
+  padding-left: 1rem!important;
+}
+
+.kriscart-widget .fs-13 {
+  font-size: 13px!important;
+}
+.kriscart-widget .fs-16 {
+  font-size: 16px!important;
+}
+
+.kriscart-widget .text-center, 
+.kriscart-widget .text-center h1, 
+.kriscart-widget .text-center h2, 
+.kriscart-widget .text-center h3, 
+.kriscart-widget .text-center h4, 
+.kriscart-widget .text-center p {
+  text-align: center!important;
+}
+
+.kriscart-widget .w-100{
+  width: 100%;
+}
+
+.kriscart-widget .cursor-pointer{
+  cursor: pointer !important;
+}
+
+.kriscart-widget .text-underline {
+  text-decoration: underline !important;
+}
+
+
+
+.kriscart-widget .input-group-addon .datePicker {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 1;
+}
+.table-condensed tr {
+  height: auto;
+}
+
+
+
+.kriscart-widget .modal-header .modal-title {
+  font-size: 20px;
+}
+.kriscart-widget .modal-header .close {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  font-size: 30px;
+  opacity: 0.7;
+  padding: 5px 10px;
+}
+
+.kriscart-widget .was-validated .form-control:valid, 
+.kriscart-widget .was-validated .custom-file-input:valid~.custom-file-label {
+  border-color: #ced4da;
+}
+
+.kriscart-widget .makePaymentBtn, 
+.kriscart-widget .makeBookingPaymentBtn {
+  color: white;
+  background-color: #ff6c39;
+  padding: 8px 10px;
+  /* border-radius: 27px; */
+  border: 0px;
+  z-index: 1;
+}
+
+
+/*************************************
+       modal CSS STARTING 
+*************************************/
+.kriscart-widget #successmodal .modalStatusIconHeader, 
+.kriscart-widget #conformationmodal .modalStatusIconHeader {
+  background: #47c9a2;
+}
+.kriscart-widget #errormodal .modalStatusIconHeader {
+  background: indianred;
+}
+.kriscart-widget .modalStatusIconHeader {
+  border-bottom: none;
+  position: relative;
+  text-align: center;
+  padding: 14px 25px;
+}
+.kriscart-widget .modalStatusIconHeader .icon-box {
+  color: #fff;
+  width: 65px;
+  height: 65px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  padding: 9px;
+  text-align: center;
+  font-size: 24px;
+}
+.kriscart-widget #successmodal .modalStatusIconHeader .icon-box .material-icons, 
+.kriscart-widget #conformationmodal .modalStatusIconHeader .icon-box .material-icons {
+  font-size: 49px;
+  margin: -4px 0 0 -3px;
+}
+.kriscart-widget #errormodal .modalStatusIconHeader .icon-box .material-icons {
+  font-size: 35px;
+  /* margin: -4px 0 0 -4px; */
+}
+.kriscart-widget .modal .modal-content .modalStatusHeader .right-modal-close {
+  top: 3px;
+  right: 23px;
+  font-size: 18px;
+  position: absolute;
+}
+
+.kriscart-widget #modal_conformation .m_message {
+  line-height: unset;
+}
+
+.kriscart-widget #conformationmodal .conformation_btn_no, 
+.kriscart-widget #conformationmodal .conformation_btn_yes {
+  height: 30px;
+  padding: 2px 15px;
+  float: right;
+  margin: 8px;
+}
+
+
+.kriscart-widget .modal-backdrop {
+  z-index: 99;
+}
+.kriscart-widget .modal.in .modal-dialog {
+  z-index: 100;
+}
+/*************************************
+       modal CSS ENDING 
+*************************************/
+
+
+
+.kcbtn, .kcbtn:hover {
+  background-color: #28303d;
+  color: white;
+  border-radius: 0px;
+  padding: 12px 13px 10px;
+  border: 1px solid #28303d;
+}
+
+/**************************************************
+          Validation Styles STARTING
+**************************************************/
+/*-- Placeholder changing color --*/
+/* 
+.placeholderred::-webkit-input-placeholder {
+  color: red !important;
+}
+.placeholderred:-moz-placeholder {
+  color: red !important;
+}
+.placeholderred::-moz-placeholder {
+  color: red !important;
+}
+.placeholderred:-ms-input-placeholder {
+  color: red !important;
+} */
+.placeholderred {
+  border-color: red !important;
+}

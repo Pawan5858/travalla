@@ -1,0 +1,62 @@
+.orders-table,
+.carttotal-table {
+    font-size: 14px;
+}
+
+.carttotal-table.table>tbody>tr>td {
+    border-top: none;
+    padding: 14px 10px;
+}
+
+.carttotal-table.table>tbody>tr.border {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.shippingAddrListDiv {
+    overflow-x: auto;
+    display: flex;
+}
+
+.shipAddrCard {
+    width: 200px;
+    overflow: hidden;
+    display: inline-table;
+    margin: 5px 8px;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #89c434;
+}
+
+.shipAddrCard.active {
+    border: 1px solid #66afe9;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -moz-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.forgotpwd {
+    cursor: pointer !important;
+}
+
+
+/* .myAccountContainersList li a:after{
+    right: 0px !important;
+    left: 0px !important;
+} */
+
+nav>ul>li:after {
+    content: '';
+    background-color: #009340;
+    height: 4px;
+    position: absolute;
+    right: 90px;
+    left: 80px;
+    bottom: 0;
+    display: inline-block;
+    -moz-transition: all ease-in-out .2s;
+    -webkit-transition: all ease-in-out .2s;
+    -o-transition: all ease-in-out .2s;
+    -ms-transition: all ease-in-out .2s;
+    transition: all ease-in-out .2s
+}

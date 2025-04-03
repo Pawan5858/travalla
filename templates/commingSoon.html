@@ -1,0 +1,23 @@
+{% extends 'sidemenu_layout.html' %}
+
+{% load static %}
+
+
+{% block menu_content %}
+
+<div class="row page_header">
+    <div class="col-md-12">
+        <h4 class="page_heading">{{ title }}</h4>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center w-100 vh-100">
+    <img class="img-fluid" src="{% static 'images/common/commingSoon.png' %}" alt="Coming Soon">
+</div>
+
+
+
+{% endblock %}
+{% block menu_scripts %}
+
+{% endblock %}

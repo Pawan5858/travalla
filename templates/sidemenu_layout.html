@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load humanize %}
+
+{% block vendor_css %}
+    {% block menu_vendor_css %}{% endblock %}
+{% endblock %}
+
+
+{% block css %}
+    <link href="{% static 'css/common/sideMenu.css' %}" rel="stylesheet">
+    {% block menu_css %}{% endblock %}
+{% endblock %}
+
+
+{% block title %}
+    {% if pageData.admin_console == 'CLIENT_ADMIN' %}
+        <title>TourGyde || {{ pageData.org_title }}</title>
+    {% endif %}
+
+    {% if pageData.admin_console == 'MAIN_ADMIN' %}
+        <title> TourGyde || Main Admin</title>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+ 
+  
+<!-- Body Container Starting -->
+<div class="container-fluid h-100">
+  <div class="row h-100">
+    <!-- Left Side Menu Panal Starting -->
+    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 sidemenu-strip h-100">
+      <div class="row sidemenu-logo">
+        <img class="img-fluid sidemenu-logo-img" src="/static/images/topStrip/tourgyde.png" alt="Agile Policing">
+      </div>
+
+      <div class="row sidemenu-body">
+        <ul class="menu-option mb-0 h-100 w-100">
+          {% for val in pageData.currentMenu %}
+            <li class="menu-opt-li {% if page_link == val.link %}{{ val.subMenu|yesno:'menu-opt-li-open,menu-opt-li-selected' }}{% endif %}">
+              {% if val.subMenu %}
+                <a class="menu-option-content" onclick="openSubMenu(this)">
+                  {% if page_link == val.link %}
+                    <div class="menu-opt-arrow-right"></div>
+                  {% endif %}
+                  <img class="img-fluid menu-option-content-img" src="/static/images/sideMenu/{{ val.link }}.png">
+                  {{ val.name }}
+                  <i class="fa fa-angle-right arrow float-right" style="margin: 15px 15px 0px 0px;"></i>
+                </a>
+                <ul class="menu-option menuSubOptions">
+                  {% for subMenu in val.subMenu %}
+                    <li class="menu-opt-li w-100 {% if sub_link == subMenu.link %}menu-opt-li-selected{% endif %}">
+                      <a class="menu-option-content" href="/clientAdmin/{{ subMenu.link }}">{{ subMenu.name }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <a class="menu-option-content" href="/clientAdmin/{{ val.link }}">
+                  {% if page_link == val.link %}
+                    <div class="menu-opt-arrow-right"></div>
+                  {% endif %}
+                  <img class="img-fluid menu-option-content-img" src="/static/images/sideMenu/{{ val.link }}.png">
+                  {{ val.name }}
+                </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="row sidemenu-provedBy">
+        <p class="col-md-12">Powered By</p>
+        <img class="img-fluid" src="/static/images/sideMenu/tourgyde.png" alt="Tour Gyde Pvt Ltd.,">
+      </div>
+
+    </div>
+    <!-- Left Side Menu Panal Ending -->
+
+    <!-- Right Side Panal Starting -->
+    <div class="col-lg-10 col-md-9 col-sm-12 col-xs-12 h-100">
+      <!-- Top Strip Starting -->
+      <div class="row topStrip">
+        <div class="col-auto d-flex">
+          {% block page_heading %}{% endblock %}
+        </div>
+        <div class="col d-flex">
+          {% if accObj %}
+            <img class="img-fluid m-auto" style="height: 40px;" src="/{{ accObj.logo }}" alt="{{ accObj.title }}">
+          {% endif %}
+        </div>
+        <div class="col-auto d-flex text-right">
+          <a class="mtb-auto d-none toggleSearchBtn" onclick="toggleSearchContainer()">
+            <i class="fa fa-sliders-h fs-18 mt-1"></i>
+          </a>
+          <!-- <i class="fa fa-bell fs-18 mtb-auto mr-3"></i> -->
+          <div class="dropdown m-auto">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link txt-primary dropdown-toggle d-flex plr-0" data-toggle="dropdown" href="#" id="navbarDropdownMenuLink">
+              <i class="fa fa-user-circle mtb-auto mr-1 fs-20"></i>
+              <span class="user_name" id="topStripCurrentUserName">-</span>
+            </a>
+            <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu fs-14 dropdown-menu-right">
+              <a class="dropdown-item user_action my_profile" onclick="myProfileBtnAction()">
+                <i class="fa fa-user mr-2"></i>
+                My Profile
+              </a>
+              <a class="dropdown-item user_action change_pswrd" onclick="changePwdBtnAction()">
+                <i class="fa fa-key mr-2"></i>
+                Change Password
+              </a>
+              <a class="dropdown-item user_action logout" onclick="logoutBtnAction()">
+                <i class="fa fa-power-off mr-2"></i>
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Top Strip Ending -->
+
+      <!-- SideMenu Layout Content Area Start -->
+      <div class="row menu_content_container">
+        <div class="col-12 pb-5" style="min-height: calc(100vh - 90px);">
+          {% block menu_content %}{% endblock %}
+        </div>
+
+        <!-- Copyright Content Area Start -->
+        <div class="col-12 d-none">
+          <div class="row menu_content_copyrights">
+            {% if userPrefList and 'BEATSERVICES' in userPrefList and 'PATROLLING' in userPrefList %}
+              <div class="col-auto">
+                <img class="img-fluid" style="height: 40px;" src="/static/images/topStrip/E-beats-logo.png" alt="Agile Beats">
+              </div>
+              <div class="col">
+                <h6 class="menu_content_copyrights_text text-center">copyright © 2020 Nimaisoft Systems Pvt.Ltd.,</h6>
+              </div>
+              <div class="col-auto">
+                <img class="img-fluid" style="height: 40px;" src="/static/images/topStrip/agile_patrol.png" alt="Agile Patrol">
+              </div>
+            {% else %}
+              <div class="col">
+                <h6 class="menu_content_copyrights_text">copyright © 2020 Nimaisoft Systems Pvt.Ltd.,</h6>
+              </div>
+              <div class="col-auto">
+                <img class="img-fluid" style="height: 40px;" src="/static/images/topStrip/agile_policing.png" alt="Agile Policing">
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <!-- Copyright Content Area End -->
+      </div>
+      <!-- SideMenu Layout Content Area End -->
+    </div>
+    <!-- Right Side Panal Ending -->
+  </div>
+</div>
+<!-- Body Container Ending -->
+
+<!-- Admin MyProfile Modal Structure -->
+<div id="myProfileModal" class="modal customModal customModal-lg">
+  <div class="modal-content">
+    <div class="row modalCustomHeader">
+      <div class="col-12">
+        <h5 class="m-0">My Profile</h5>
+        <a class="modal-close right-modal-close"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="details_container col-md-6">
+        <label>Name</label>
+        <span class="myProfName">-</span>
+      </div>
+      <div class="details_container col-md-6">
+        <label>Designation</label>
+        <span class="myProfDesg">-</span>
+      </div>
+      <div class="details_container col-md-12 mt-3">
+        <label>Description</label>
+        <span class="myProfDesc">-</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-red btn-flat">Close</a>
+  </div>
+</div>
+
+<!-- Admin Change Pwd Modal Structure -->
+<div id="adminChangePwdModal" class="modal customModal customModal-lg">
+  <div class="modal-content">
+    <div class="row modalCustomHeader">
+      <div class="col-12">
+        <h5 class="m-0">Change Password</h5>
+        <a class="modal-close right-modal-close"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+    <form id="changePwdForm">
+      <div class="row mt-5">
+        <div class="input-field col col-md-6">
+          <input id="adminOldPwd" name="oldPwd" type="password" class="mandatoryLocal" data-label="Old Password" placeholder="Enter Old Password">
+          <label for="adminOldPwd" class="inputNameLabel">Old Password *</label>
+        </div>
+        <div class="input-field col col-md-6">
+          <input id="adminNewPwd" name="newPwd" type="password" class="mandatoryLocal" data-label="New Password" placeholder="Enter New Password">
+          <label for="adminNewPwd" class="inputNameLabel">New Password *</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+    <a class="waves-effect waves-green btn-flat" onclick="adminChangePwdAction()">Change</a>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block vendor_scripts %}
+    {% block menu_vendor_scripts %}{% endblock %}
+    <!-- <script type="text/javascript">
+        function getCurrAdminConsoleType() {
+          return {{ pageData.admin_console | json_script:"admin_console_data" }};
+        }
+    </script> -->
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/common/sideMenu.js' %}"></script>
+    {% block menu_scripts %}{% endblock %}
+{% endblock %}

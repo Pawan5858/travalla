@@ -1,0 +1,155 @@
+.sidemenu-strip {
+  background-color: var(--app-primary-color);
+}
+.sidemenu-logo{
+  border-bottom: 1px solid var(--app-primary-light-color);
+  height: 88px;
+}
+.sidemenu-logo-img{
+    max-height: 88px;
+    margin: auto;
+}
+
+.sidemenu-provedBy {
+  border-top: 1px solid var(--app-primary-light-color);
+  height: 85px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.sidemenu-provedBy p {
+  font-size: 10px;
+  margin: 10px 15px 0px;
+  color: var(--primary-btn-color);
+}
+.sidemenu-provedBy img {
+  height: 46px;
+  padding-left: 10px;
+}
+
+.sidemenu-body {
+  color: white;
+  overflow-y: auto;
+  height: calc(100vh - 173px);
+  font-family: Poppins-Light;
+  font-size: 14px;
+}
+.menu-option-content-img {
+  height: 30px;
+  margin: 9px 5px 9px 10px;
+}
+.menu-option {
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+  -moz-padding-start: 0px;
+}
+.sidemenu-body > .menu-option > .menu-opt-li {
+  border-bottom: 1px solid var(--app-primary-light-color);
+}
+.menu-opt-li {
+  position: relative;
+  min-height: 44px;
+}
+.menu-opt-li a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+}
+.menuSubOptions{
+  display: none;
+  margin-left: -25px;
+}
+.menu-opt-li-open .menuSubOptions{
+  display: block;
+}
+.menu-opt-li-open .arrow::before{
+  content: "\f107";
+}
+.menuSubOptions .menu-opt-li {
+  display: table;
+  padding-left: 50px;
+  line-height: 3.45;
+}
+.menu-opt-arrow-right {
+  height: 49px;
+  border-top: 10px solid var(--selected-menuItem-color);
+  border-bottom: 10px solid var(--selected-menuItem-color);
+  border-left: 5px solid var(--selected-menuItem-color);
+  position: absolute;
+}
+.menu-opt-li-selected {
+  background-color: rgba(0,0,0,0.2);
+}
+
+
+.topStrip{
+  position: relative;
+  height: 50px;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(33,33,33,.2);
+  -webkit-box-shadow: 0 2px 4px rgba(33,33,33,.2);
+  -moz-box-shadow: 0 2px 4px rgba(33,33,33,.2);
+  -o-box-shadow: 0 2px 4px rgba(33,33,33,.2);
+  -ms-box-shadow: 0 2px 4px rgba(33,33,33,.2);
+
+  font-family: Poppins-Light;
+  color: var(--app-header-text-color);
+}
+.topStrip-heading {
+  font-size: 18px;
+}
+.topStrip a {
+  color: var(--app-header-text-color);
+}
+.topStrip .dropdown-toggle::after {
+  margin: auto;
+  margin-left: 2px;
+}
+.topStrip .toggleSearchBtn {
+  cursor: pointer;
+  padding: .5rem;
+  margin-right: .25rem;
+}
+
+
+
+.menu_content_container {
+  background-color: var(--app-main_bg-color);
+  height: calc(100vh - 50px);
+  overflow: auto;
+}
+
+.menu_content_copyrights {
+  background-color: var(--copyright-strip-color);
+  height: 40px;
+}
+.menu_content_copyrights_text {
+  color: white;
+  padding-top: 12px;
+  padding-right: 8px;
+  font-size: 14px;
+  margin: 0px;
+  width: 100%;
+  font-family: Poppins-Light;
+}
+
+
+/**************************************************
+       ScrollBar Styles Starting
+**************************************************/
+.sidemenu-body::-webkit-scrollbar-thumb {
+  /* background: rgba(0,0,0,0.2); */
+  background: var(--app-header-text-color);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0);
+}
+
+.sidemenu-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+/**************************************************
+       ScrollBar Styles Ending
+**************************************************/

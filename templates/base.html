@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% block title %}
+  <title>Tour Gyde</title>
+  {% endblock %}
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/common/favicon.png' %}" />
+
+  <link href="{% static 'css/vendors/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/vendors/fontawesome.css' %}" rel="stylesheet">
+  <link href="{% static 'css/vendors/bootstrap-datepicker.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static '/css/vendors/materialize.min.css' %}">
+
+  <link href="{% static 'css/vendors/jquery.dataTables.min.css' %}" rel="stylesheet">
+
+  {% block vendor_css %}{% endblock %}
+  <!-- block for CSS, Links, etc.. added on pages on demand -->
+
+  <link href="{% static 'css/common/commonStyle.css' %}" rel="stylesheet">
+
+  {% block css %}{% endblock %}
+  <!-- block for CSS, Links, etc.. added on pages on demand -->
+</head>
+
+<body>
+
+  <!-- START OF CONTENT AREA -->
+  {% block content %}{% endblock %}
+  <!-- END OF CONTENT AREA -->
+
+
+  <!-- Modal Dialogs -->
+
+<!-- Starting of conformation Modal -->
+<div id="modal_conformation" class="modal customModal customModal-sm callbckFn_storg">
+  <div class="modal-content">
+    <div class="row modalCustomHeader">
+      <div class="col-12">
+        <h5 class="m-0 m_title">Confirmation</h5>
+        <a class="modal-close right-modal-close btn_no"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+    <h6 class="mt-4 m_message"></h6>
+    <div class="mt-4 m_content d-none"></div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-red btn-flat btn_no">Cancel</a>
+    <a class="waves-effect waves-green btn-flat btn_yes">OK</a>
+  </div>
+</div>
+<!-- Ending of conformation Modal -->
+
+<!-- Status Dialogs Starting -->
+<div id="successmodal" class="modal customModal">
+  <div class="modal-content">
+    <div class="row modalStatusHeader">
+      <div class="col-auto modalStatusIconHeader">
+        <div class="icon-box"><i class="material-icons"></i></div>
+      </div>
+      <div class="col d-flex">
+        <h6 class="m-auto w-100 successmassagetext"></h6>
+        <a class="modal-close right-modal-close"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="errormodal" class="modal customModal">
+  <div class="modal-content">
+    <div class="row modalStatusHeader">
+      <div class="col-auto modalStatusIconHeader">
+        <div class="icon-box"><i class="material-icons">warning</i></div>
+      </div>
+      <div class="col d-flex">
+        <h6 class="m-auto w-100 errormassagetext"></h6>
+        <a class="modal-close right-modal-close"><i class="material-icons">close</i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Status Dialogs Ending -->
+
+<!-- AJAX Loader -->
+<div class="loaderDiv d-none">
+  <div class="loader"></div>
+</div>
+
+  
+  <script src="{% static 'js/vendors/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/vendors/popper.min.js' %}"></script>
+  <script src="{% static 'js/vendors/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/vendors/bootstrap-confirmation.js' %}"></script>
+  <script src="{% static 'js/vendors/bootstrap-datepicker.js' %}"></script>   
+  <script src="{% static 'js/vendors/materialize.min.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery.dataTables.min.js' %}"></script>
+  <script src="{% static 'js/vendors/moment.min.js' %}"></script>
+  <script src="{% static 'js/vendors/jquery.sha1.js' %}"></script>
+  <script src="{% static 'js/vendors/JSEcrypt.js' %}"></script>
+  {% block vendor_scripts %}{% endblock %}
+  <!-- block for JS added on pages on demand -->
+  <script src="{% static 'js/common/commonScript.js' %}"></script>
+  <!-- <script src="{% static 'clientAdminResources/js/login.js' %}"></script> -->
+  {% block scripts %}{% endblock %}
+  <!-- block for JS added on pages on demand -->
+</body>
+
+</html>
+

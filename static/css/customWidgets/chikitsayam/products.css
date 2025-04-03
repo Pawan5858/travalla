@@ -1,0 +1,23 @@
+
+.productCard, .productCard .view {
+    cursor: pointer;
+}
+
+#productDetailsModal .heading {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.productprice-table.table > tbody > tr.border-top {
+    border-top: 1px solid black;
+}
+.productprice-table.table > tbody > tr.border {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+.productprice-table.table > tbody > tr > td {
+    border-top: none;
+}
+.no-margin{
+    margin: 0px!important;
+}

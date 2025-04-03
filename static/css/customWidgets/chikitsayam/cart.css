@@ -1,0 +1,49 @@
+
+#cartcounts-widget-container.d-inline {
+    display: none !important;
+}
+
+.cartitems-table {
+    font-size: 14px;
+}
+
+input.qty-field {
+    padding: 4px 8px;
+    border: 1px solid #39414d;
+    border-radius: 0px;
+    line-height: 1.7;
+    margin: 0 2px;
+    max-width: 80px;
+}
+
+.carttotal-table {
+    font-size: 14px;
+}
+
+.carttotal-table.table > tbody > tr > td {
+    border-top: 1px solid black;
+    padding: 14px 10px;
+}
+.carttotal-table.table > tbody > tr.border {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.checkoutbtn, .checkoutbtn:hover {
+    background-color: #28303d;
+    color: white;
+    border-radius: 0px;
+    padding: 12px 13px 10px;
+    border: 1px solid #28303d;
+    width: 100%;
+}
+
+.removeItemBtn {
+    border: none;
+    background: transparent;
+    color: red;
+}
+
+.no-margin{
+    margin: 0px !important;
+}

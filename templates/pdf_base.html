@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <title>SWC</title>
+     
+      <link rel="shortcut icon" type="image/png" href="/static/images/common/favicon.png" />
+
+
+      <link href="/static/css/vendors/bootstrap.min.css" rel="stylesheet">
+
+      
+      {% block added_css %}{% endblock %}                       <!-- block for CSS, Links, etc.. added on pages on demand -->
+  </head>
+
+  <body>
+  
+      <!-- START OF CONTENT AREA -->
+      {% block content %}{% endblock %}
+      <!-- END OF CONTENT AREA -->
+  
+      <script src="/static/js/vendors/bootstrap.min.js"></script>
+      
+  </body>
+</html>

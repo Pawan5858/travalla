@@ -1,0 +1,583 @@
+/* 
+#cartcounts-widget-container.d-inline {
+    display: none !important;
+} */
+
+
+.kriscart-widget #issame {
+    background: unset;
+    border-radius: unset;
+    border: unset;
+    height: unset;
+    padding-right: unset;
+    box-shadow: unset;
+    padding-left: unset;
+    transition: unset;
+    transition:unset;
+    -moz-transition: unset;
+    -ms-transition: unset;
+    -o-transition: unset;
+    -webkit-transition: unset;
+    font-size: 10px;
+    color: unset;
+    width: unset;
+}
+
+.cartitems-table {
+    font-size: 14px;
+}
+
+input.qty {
+    padding: 4px 8px;
+    border: 1px solid #39414d;
+    border-radius: 0px;
+    line-height: 1.7;
+    margin: 0 2px;
+    max-width: 80px;
+}
+
+.carttotal-table {
+    font-size: 14px;
+}
+
+.carttotal-table.table > tbody > tr > td {
+    border-top: none;
+    padding: 14px 10px;
+}
+.carttotal-table.table > tbody > tr.border {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.checkoutbtn, .checkoutbtn:hover {
+    background-color: var(--app-body-theme-color);
+    color: white;
+    border-radius: 0px;
+    padding: 12px 13px 10px;
+    border: 1px solid var(--app-body-theme-color);
+    width: 100%;
+}
+
+
+/* .shippingAddrListDiv {
+    overflow-x: auto;
+    display: flex;
+} */
+
+.shipAddrCard {
+    min-height: 120px;
+    /* padding: 8px; */
+    cursor: pointer;
+    background: #ebebeb;
+}
+.shipAddrCard.active {
+    border: 1px solid #151515;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -moz-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.shipAddrCard h5{
+    font-family: unset;
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+.shipAddrCard p{
+    padding: 5px;
+    font-size: 13px;
+}
+
+#accordion .card-header{
+    background: var(--app-body-theme-color);;
+    padding: 10px;
+}
+
+#accordion .card-header a{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+#accordion .card-header label{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+#accordion  .card-body h2{
+    font-size: 17px;
+    font-family: inherit;
+    font-weight: 600;
+    margin: 0;
+    padding: 0px 3px;
+    background: #f3f3f3;
+}
+
+.m_b_5{
+    margin-bottom: 5px;
+}
+
+.item_img_tag img
+{
+    width: 120px;
+    margin: auto;
+    padding: 8px 0
+}
+.input-group label{
+    padding: 5px;
+    border: 1px solid var(--app-body-theme-color);
+    height: 34px;
+    cursor: pointer;
+    color:#fff;
+    background: var(--app-body-theme-color);
+    border-radius: 3px 0px 0px 3px;
+}
+.input-group-prepend label{
+    border-radius: 3px 0px 0px 3px;
+}
+.input-group-append label{
+    border-radius: 0px 3px 3px 0px;
+}
+.p-5-10{
+    padding: 5px 10px;
+}
+.border_bottom_scss{
+    border-bottom: 1px solid #ccc;
+}
+
+.item_details label{
+    padding: 8px 0px;
+    padding-bottom: 0px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.itemprize{
+    color: green;
+    font-size: 26px;
+    padding: 8px;
+}
+.p-t-45{
+    padding-top: 45px;
+}
+.no_items_img{
+    width:200px;
+    margin: auto;
+}
+.p-30-10{
+    padding: 30px 10px;
+}
+.no_records_found{
+    font-size: 18px;
+    font-weight: 600;
+    color:#ccc;
+}
+.outofstock_css{
+    font-size: 20px;
+    color: red;
+}
+.removeItemBtn_lat{
+    color: red;
+    font-size: 30px;
+    cursor: pointer;
+}
+.cards_h3_stye{
+    background: var(--app-body-theme-color);
+    font-size: 18px;
+    padding: 10px;
+    margin: 0px;
+    font-weight: 600;
+    color: #fff!important;
+    line-height: normal;
+}
+.p-0-5{
+    padding: 0px 5px;
+}
+.p-10-5{
+    padding: 10px 5px;
+}
+.our-menu .row{
+    margin: 0px !important;
+}
+.feditbillingaddress{
+    float: right;
+    padding-top: 15px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.sameasbaddre{
+    padding-top: 0px;
+    float: right;
+    font-size: 13px;
+    padding-right: 10px;
+    line-height: 44px;
+    cursor: pointer;
+}
+
+
+
+.item_img_tag .input-group{
+ width:100%;
+ margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .item_details label {
+        font-size: 13px;
+    }
+    .item_details .fs-13{
+        font-size: 11px; 
+    }
+    .removeItemBtn_lat {
+        font-size: 16px;
+    }
+    .item_img_tag .input-group .form-control{
+        padding: 6px 5px;
+        width: 42px;
+        height: 30px;
+    }
+    .input-group label {
+        padding: 5px;
+        height: 30px;
+    }
+    .item_img_tag .input-group{
+        width: 84px;
+    }
+    .outofstock_css {
+        font-size: 16px;
+        color: red;
+        padding: 3px 0px;
+    }
+}
+@media screen and (min-width: 768px) {
+.item_img_tag .input-group .form-control{
+    padding: 6px 5px;
+    width: 42px;
+    height: 35px;
+}
+}
+
+.item_details label {
+    width:100%;
+}
+
+.removeItemBtn_lat{
+    float: right;
+    position: absolute;
+    right: -15px;
+}
+
+.labelnoneclickable_header{
+    position: relative;
+    cursor: inherit !important;
+    background: #6d7178 !important;
+}
+.labelnoneclickable{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+}
+.changespan_css{
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 3px 10px;
+    z-index: 999;
+    margin-top: 10px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.btndel_label,.btnbildel_label,.btndel_label:hover,.btndel_label:focus,.btnbildel_label:hover,.btnbildel_label:focus{
+    background: var(--app-body-theme-color) !important;
+    border-color: var(--app-body-theme-color) !important;
+    margin-bottom: 10px;
+    color: #fff !important;
+    text-transform: uppercase;
+}
+.shippingAddrListDiv {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+.btnbillingclear,.btndelclear,.btndelcancel,.btndelcancel1{
+    margin-bottom: 10px;
+}
+.activeheader{
+    background: var(--app-body-theme-color) !important;
+}
+.applycuponlable{
+    width: 100%;
+    border: 1px dashed;
+    padding: 10px;
+    text-align: left;
+}
+.apply_cop_p5{
+    padding: 5px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #f2f4f8;
+    overflow-x: hidden;
+    transition: 0.5s;
+    border: 1px solid #ccc;
+}
+
+.sidenav .closebtn {
+    font-size: 39px;
+    color: #000;
+    padding-left: 10px;
+}
+
+.sidenav {
+    width: 30%;
+    margin-right: -30%;
+}
+
+.transperent_layer {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.po_rel{
+    position: relative;
+}
+.applycoupsidediv{
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px dashed;
+    background:#fff;
+}
+.txtapplycoupon{
+    height: 45px;
+    border-radius: 0px;
+}
+.apply_lable_coupon{
+    position: absolute;
+    right: 10px;
+    background: var(--app-body-theme-color);
+    padding: 12px;
+    top: 65px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff !important;
+    font-weight: 600;
+}
+.apply_lable_coupon1 {
+    position: absolute;
+    right: 20px;
+    background: var(--app-body-theme-color);
+    padding: 8px;
+    top: 48px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+
+.padding-top-130{
+    padding-top: 130px;
+}
+.bg-white{
+    background: #fff;
+   
+}
+.apcoupondiv{
+    max-height: 655px;
+    overflow: auto;
+}
+.avl_coupons_div{
+    padding: 10px;
+}
+.avlptag{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.avlcouponbody{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-top: 5px;
+}
+
+.applybodybtn{
+    background: #28303d;
+    padding: 10px;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+.errorlabelapplycoupon{
+    font-size: 11px;
+    color: red !important;
+    font-weight: 600;
+}
+
+
+
+/* Apply Ecash Styling Start */
+
+
+.swapBox {
+    display: flex;
+    /* margin-top: 26px; */
+    /* margin-bottom: 26px; */
+    border: 1px solid #ebebeb;
+}
+.swapBox a, .swapBox label {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+.swapBox a {
+    padding: 0 7px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: black;
+    border-left: 1px solid #000000;
+    cursor: pointer;
+}
+.swapBox a:hover {
+    color: #fff;
+    background: black;
+}
+.swap-input {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 7px;
+    font: inherit;
+    border: 0;
+}
+.swapBox > label {
+    margin-bottom: 0px;
+    padding-right: 7px;
+    color: #707070;
+    cursor: pointer;
+}
+.swapBox > label:before {
+    width: 16px;
+    height: 16px;
+    margin: 13px;
+    padding: 1px;
+    content: '\00A0';
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 14px;
+    color: #ebebeb;
+    background: #cacaca;
+    background-clip: padding-box;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .1) inset;
+}
+.swapBox > label:after {
+    display: block;
+    content: '';
+    background: #ebebeb;
+}
+.swapBox > label:hover {
+    color: #0072bc;
+}
+.swap {
+    display: none;
+}
+.swapBox input[type='checkbox'] {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+.swapBox input[type='checkbox']:checked + label {
+    padding: 0;
+    font-size: 0;
+    background: #ebebeb;
+}
+.swapBox input[type='checkbox']:checked + label:before {
+    content: '\2715';
+    color: #fff;
+    background: red;
+}
+.swapBox input[type='checkbox']:checked ~ .swap {
+    display: flex;
+    flex: 2 1 0;
+}
+.swapBox input[type='checkbox']:checked ~ .swap .swap-input {
+    height: auto;
+}
+/* INLINE LABEL PATTERN ========================================================================== */
+.inlineLabel {
+    position: relative;
+}
+.inlineLabel label {
+    position: absolute;
+    z-index: -1;
+    bottom: 103%;
+    margin: 0;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transform: translateZ(0);
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0;
+    color: #707070;
+}
+.inlineLabel label.on {
+    color: #f60;
+    font-weight: bold;
+}
+.inlineLabel label.show {
+    z-index: 0;
+    opacity: 1;
+}
+.inlineLabel option {
+    color: black;
+}
+.inlineLabel .watermark, .inlineLabel .watermark option:first-child, .inlineLabel .placeholder {
+    color: #ebebeb;
+}
+/* FLASH INPUT ========================================================================== */
+.flashInput input[type='text'] {
+    -webkit-animation: flashMe 1.5s;
+    animation: flashMe 1.5s;
+}
+@-webkit-keyframes flashMe {
+    0% {
+        background-color: rgba(249, 177, 6, .75);
+   }
+    100% {
+        background-color: #fff;
+   }
+}
+@keyframes flashMe {
+    0% {
+        background-color: rgba(249, 177, 6, .75);
+   }
+    100% {
+        background-color: #fff;
+   }
+}
+

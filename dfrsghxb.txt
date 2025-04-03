@@ -1,0 +1,287 @@
+login:
+function errorCallBack(jqXHR, textStatus, errorThrown) {
+    if (jqXHR.status === 401) {
+        clearUserSession();
+        var url = window.location.hostname;
+        var parts = url.split('.');
+        var redirectUrl = (parts.length >= 2 && parts[0] !== 'localhost') 
+            ? `http://${parts[0]}.localhost:8000/mainAdmin/` 
+            : '/mainAdmin/';
+        window.location.href = redirectUrl;
+    } else {
+        var response = jqXHR.responseJSON;
+        if (response && !isInvalidString(response.message)) {
+            show_StatusModal(response.message, statusEnum.error);
+        } else if (response && !isInvalidString(response.detail)) {
+            show_StatusModal(response.detail, statusEnum.error);
+        } else {
+            show_StatusModal("A system error occurred. Please try again.", statusEnum.error);
+        }
+    }
+}
+
+function clearUserSession() {
+    localStorage.removeItem('sessiontoken');
+    localStorage.removeItem('adminDetails');
+    document.cookie = 'sessiontoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+
+
+function refreshToken() {
+    var refreshToken = localStorage.getItem('refresh_token');
+    $.ajax({
+        url: baseUrl + 'token/refresh/',  // DRF Simple JWT refresh endpoint
+        type: 'POST',
+        data: { refresh: refreshToken },
+        success: function(result) {
+            setCookie('sessiontoken', result.access, 30);
+            localStorage.setItem('sessiontoken', result.access); // Update token
+        },
+        error: function() {
+            clearUserSession();
+            window.location.href = '/mainAdmin/';
+        }
+    });
+}
+
+function errorCallBack(jqXHR, textStatus, errorThrown) {
+    if (jqXHR.status === 401) {
+        refreshToken(); // Try refreshing token before redirecting
+    } else {
+        // ... (existing error handling) ...
+    }
+}
+
+
+===================================================================================================================================================================================
+client api call
+function loginBtnAction(e) {
+ $('#loginForm').addClass('was-validated');
+    
+ $('#loginForm').off('submit').submit(function (e) {
+      e.preventDefault();
+      var formEle = '#loginForm'
+      if (validateForm(formEle)) {
+        var loginForm = document.getElementById("loginForm");
+        var formData = new FormData(loginForm);
+        formData.set('password', rsa_encrypt.encrypt(formData.get('password')));
+        $.ajax({
+          url: baseUrl + 'clientAdmin/clientAdminLogin/',
+          data: formData,
+          cache: false,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function (result) {
+            if (apiResStatus(result.status)) {
+               
+              addUserSession(result.user)
+              window.location.href = "dashboard";
+
+            } else {
+              show_StatusModal(result.message, result.status)
+            }
+          },
+          error: errorCallBack
+        });
+      }
+ })
+  
+}
+
+main admin api:
+
+function loginBtnAction(e) {
+ $('#loginForm').addClass('was-validated');
+    
+ $('#loginForm').off('submit').submit(function (e) {
+      e.preventDefault();
+      var formEle = '#loginForm'
+      if (validateForm(formEle)) {
+        var loginForm = document.getElementById("loginForm");
+        var formData = new FormData(loginForm);
+        formData.set('password', rsa_encrypt.encrypt(formData.get('password')));
+        $.ajax({
+          url: baseUrl + 'mainAdmin/mainAdminLogin/',
+          data: formData,
+          cache: false,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function (result) {
+            if (apiResStatus(result.status)) {
+               
+              addUserSession(result.user)
+              window.location.href = "dashboard";
+
+            } else {
+              show_StatusModal(result.message, result.status)
+            }
+          },
+          error: errorCallBack
+        });
+      }
+ })
+  
+}
+
+commonScript file: for both mainadmin and client admin
+
+function addUserSession(user) {
+    localStorage.setItem('organizationId', user.organizationId)
+    localStorage.setItem('sessiontoken', user.sessiontoken)
+    localStorage.setItem('adminDetails', JSON.stringify(user))
+
+    setCookie('sessiontoken', user.sessiontoken, 30);
+    setCookie('organizationId', user.organizationId, 30);
+}
+
+very page load this commonscript file autometically call initAjaxSetUp():
+function initAjaxSetUp() {
+  $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+          'deviceType': "WEB"
+      },
+      beforeSend: function(xhr) {
+          const token = localStorage.getItem("sessiontoken");
+          
+          if (!isInvalidString(token)) {
+              xhr.setRequestHeader('Authorization', 'Bearer ' + token); // Send as Authorization header
+          }
+          if (!isInvalidString(localStorage.getItem("organizationId"))) {
+              xhr.setRequestHeader('organizationId', localStorage.getItem("organizationId"));
+          }
+      }
+  });
+}
+
+
+401:function errorCallBack(jqXHR, textStatus, errorThrown) {
+  if (jqXHR.status === 401) {
+      clearUserSession();
+      var url = window.location.hostname;
+      var parts = url.split('.');
+      var redirectUrl = (parts.length >= 2 && parts[0] !== 'localhost') 
+          ? `http://${parts[0]}.localhost:8000/mainAdmin/` 
+          : '/mainAdmin/';
+      window.location.href = redirectUrl;
+  } else {
+      var response = jqXHR.responseJSON;
+      if (response && !isInvalidString(response.message)) {
+          show_StatusModal(response.message, statusEnum.error);
+      } else if (response && !isInvalidString(response.detail)) {
+          show_StatusModal(response.detail, statusEnum.error);
+      } else {
+          show_StatusModal("A system error occurred. Please try again.", statusEnum.error);
+      }
+  }
+}
+
+==================================================================================================================================================================================
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; HttpOnly; SameSite=Strict";
+}
+
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function addUserSession(user, token, refreshToken) {
+    localStorage.setItem('adminDetails', JSON.stringify(user));
+    localStorage.setItem('refresh_token', refreshToken);
+    setCookie('sessiontoken', token, 30);
+    // Only set organizationId if provided by backend
+    if (user.organizationId) {
+        setCookie('organizationId', user.organizationId, 30);
+        localStorage.setItem('organizationId', user.organizationId);
+    }
+}
+
+function initAjaxSetUp() {
+  $.ajaxSetup({
+      headers: {
+          'deviceType': "WEB"
+      },
+      beforeSend: function(xhr) {
+          const token = getCookie("sessiontoken");
+          if (!isInvalidString(token)) {
+              xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+          }
+          const orgId = getCookie("organizationId");
+          if (!isInvalidString(orgId)) {
+              xhr.setRequestHeader('organizationId', orgId);
+          }
+      }
+  });
+}
+
+function clearUserSession() {
+    localStorage.removeItem('sessiontoken');
+    localStorage.removeItem('adminDetails');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('organizationId');
+    document.cookie = 'sessiontoken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'organizationId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+function refreshToken(callback) {
+    var refreshToken = localStorage.getItem('refresh_token');
+    if (!isInvalidString(refreshToken)) {
+        $.ajax({
+            url: baseUrl + 'token/refresh/',
+            type: 'POST',
+            data: { refresh: refreshToken },
+            success: function(result) {
+                setCookie('sessiontoken', result.access, 30);
+                localStorage.setItem('sessiontoken', result.access);
+                callback(true);
+            },
+            error: function() {
+                clearUserSession();
+                callback(false);
+            }
+        });
+    } else {
+        clearUserSession();
+        callback(false);
+    }
+}
+
+function errorCallBack(jqXHR, textStatus, errorThrown) {
+  if (jqXHR.status === 401) {
+      refreshToken(function(success) {
+          if (!success) {
+              var url = window.location.hostname;
+              var parts = url.split('.');
+              var redirectUrl = (parts.length >= 2 && parts[0] !== 'localhost') 
+                  ? `http://${parts[0]}.localhost:8000/mainAdmin/` 
+                  : '/mainAdmin/';
+              window.location.href = redirectUrl;
+          }
+      });
+  } else {
+      var response = jqXHR.responseJSON;
+      if (response && !isInvalidString(response.message)) {
+          show_StatusModal(response.message, statusEnum.error);
+      } else if (response && !isInvalidString(response.detail)) {
+          show_StatusModal(response.detail, statusEnum.error);
+      } else {
+          show_StatusModal("A system error occurred. Please try again.", statusEnum.error);
+      }
+  }
+}

@@ -1,0 +1,305 @@
+
+.orders-table, 
+.carttotal-table {
+    font-size: 14px;
+}
+
+.carttotal-table.table > tbody > tr > td {
+    border-top: none;
+    padding: 14px 10px;
+}
+.carttotal-table.table > tbody > tr.border {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+.carttotal-table.table > tbody > tr.border-dotted {
+    border-top: 2px dotted rgb(95, 93, 93);
+    /* border-bottom: 1px dotted black; */
+}
+nav select {
+	display: none
+}
+
+.toggle-password{
+    cursor: pointer;
+    font-weight: 500;
+    font-size: larger;
+}
+
+.input-group-multi [class*='col-'] {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .input-group-multi .form-control {
+    border-right: 0;
+  }
+  
+  .input-group-multi [class*='col-']:last-child .form-control {
+    border-radius: 0 4px 4px 0;
+    border-right: 1px solid #ccc;
+  }
+
+nav ul {
+	margin: 0
+}
+
+nav>ul>li {
+	float: left;
+	position: relative;
+	text-align: center
+}
+
+nav ul li {
+	list-style: none
+}
+
+nav ul li a,
+nav ul li a:hover {
+	text-decoration: none
+}
+
+nav>ul>li a {
+	padding: 15px 7px;
+	display: block;
+	font-size: 16px;
+	color: rgb(0, 0, 0)
+}
+
+nav>ul>li a:hover {
+	color: var(--app-body-theme-color);
+	background-color: #fbfbfb
+}
+
+/* nav>ul>li:after {
+	content: '';
+	background-color: var(--app-body-theme-color);
+	height: 4px;
+	position: absolute;
+	right: 95px;
+	left: 95px;
+	bottom: 0;
+	display: inline-block;
+	-moz-transition: all ease-in-out .2s;
+	-webkit-transition: all ease-in-out .2s;
+	-o-transition: all ease-in-out .2s;
+	-ms-transition: all ease-in-out .2s;
+	transition: all ease-in-out .2s
+} */
+
+nav>ul>li:hover:after {
+	left: 0;
+	right: 0
+}
+
+nav>ul>li>span {
+	position: absolute;
+	right: 5px;
+	top: 35px;
+	width: 7px;
+	height: 6px;
+	margin: 0 0 0 5px;
+	float: right;
+	background: url(../images/nav_arrow.png) left top no-repeat
+}
+
+nav>ul>li.current a {
+	color: #000!important;
+	background-color: #fbd8d3;
+    border-left: 5px solid  var(--app-body-theme-color);
+}
+nav i {
+    padding-right: 10px;
+}
+
+#myaccount-widget-container{
+    padding: 20px 0px;
+}
+
+@media only screen and (max-width: 1023px){
+    .myAccountContainersList {
+        /* display: flex !important; */
+    }
+    
+}
+
+
+@media (max-width: 576px) {
+    nav ul{
+        text-align: center;
+        display: inline-block;
+        position: relative;
+    }
+    nav {
+        padding-top: 0px;
+        width: 100%;
+        text-align: center;
+        
+   }
+   nav>ul>li a {
+	padding: 27px 20px;
+	display: block;
+	font-size: 15px;
+	color: rgb(0, 0, 0)
+}
+   /* .myAccountOptContainer{
+       padding: 0px 20px;
+   } */
+
+    nav h1 {
+        display: none;
+   }
+    nav a {
+        text-align: center;
+   }
+    nav i {
+        padding-right: 0px;
+        font-size: 1.3em !important;
+   }
+    nav span {
+        display: none;
+   }
+   
+}
+
+/* .shippingAddrListDiv {
+    overflow-x: auto;
+    display: flex;
+} */
+
+.shipAddrCard h5 {
+    font-family: unset;
+    font-size: 15px;
+    margin: 0px;
+    padding: 5px;
+}
+.shipAddrCard p {
+    padding: 5px;
+    font-size: 13px;
+}
+.mb-20{
+    margin-bottom: 25px;
+}
+.kriscart-widget h3.heading {
+    font-family: Signika,sans-serif;
+    color: var(--app-body-theme-color);
+    border-bottom: 1px solid var(--app-body-theme-color);
+    padding: .3em 0;
+    margin-bottom: 1em;
+    font-weight: 400;
+}
+
+.kriscart-widget h3.heading1 {
+    font-family: Signika,sans-serif;
+    color: var(--app-body-theme-color);
+    padding: .3em 0;
+    margin-bottom: 1em;
+    font-weight: 400;
+    text-align: center;
+}
+.forgotpwd{
+    color: var(--app-body-theme-color) !important;
+}
+
+/* .shipAddrCard {
+    width: 200px;
+    overflow: hidden;
+    display: inline-table;
+    margin: 5px 8px;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #89c434;
+} */
+.shipAddrCard {
+    min-height: 120px;
+    /* padding: 8px; */
+    cursor: pointer;
+    background: #ebebeb;
+}
+.shipAddrCard.active {
+    border: 1px solid #66afe9;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    -moz-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+
+.loginbtn,.registerbtn{
+    font-size: 18px;
+    font-weight: 600;
+}
+.signupa,.signina{
+    float: left;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+.forgotpwd{
+    
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.rightsideblock_css{
+    background: #f1f1f1;
+}
+
+/* .rightsideblock_css form{
+    min-height: 487px;
+} */
+
+.loginblock_css{
+    border-radius: 5px;
+    overflow: hidden;
+    background: #f1f1f1;
+}
+.item_details label {
+    width:100%;
+}
+.myAccountContainersList li{
+    text-align: left;
+}
+.myAccountContainersList {
+    width: 100%;
+}
+@media screen and (min-width:976px) {
+    .myAccountContainersList li{
+        width: 100%;
+        text-align: left;
+    }
+  }
+.myAccountContainersList
+{
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+#accountDetailsForm,#ordersContainer,#wishlistContainer,#orderDetailsContainer,#addressesContainer,#changePwdContainer{
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+#accountDetailsForm h3,#ordersContainer h3,#wishlistContainer h3,#orderDetailsContainer h3,#addressesContainer h3,#changePwdContainer h3{
+    background: #fbd8d3;
+    color: #000;
+    padding: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 0px;
+}
+#addressesContainer h3{
+    margin-bottom: 0px;
+}
+.saveAccountDetailsbtn,.changePwdbtn{
+    margin-bottom: 10px;
+}
+#ordersContainer table thead,#wishlistContainer table thead{
+    background: #fbd8d3;
+}
+.backToOrdersContainer{
+    cursor: pointer;
+}
+.addressheadincss{
+    background: #f0f0f0;
+    padding: 10px 5px;
+}
+
+.billingPreview,.shippingPreview,.shippingAddrListContainer{
+    padding: 10px;
+}
