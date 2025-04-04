@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',  # Security enhancements
     'django.contrib.sessions.middleware.SessionMiddleware',  # Session management
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # CORS handling
     'django.middleware.common.CommonMiddleware',  # Common utilities
     'django.middleware.csrf.CsrfViewMiddleware',  # CSRF protection
