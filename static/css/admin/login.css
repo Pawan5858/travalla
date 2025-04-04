@@ -1,0 +1,89 @@
+.rightPanal {
+  background-color: var(--app-logo-main-color);
+}
+
+#loginForm {
+  width: 60%;
+  background: #fff;
+  padding: 30px 30px 30px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 11px 15px -7px rgba(61, 71, 85, 0.2), 0 24px 38px 3px rgba(61, 71, 85, 0.14), 0 9px 46px 8px rgba(61, 71, 85, 0.12);
+  box-shadow: 0 11px 15px -7px rgba(61, 71, 85, 0.2), 0 24px 38px 3px rgba(61, 71, 85, 0.14), 0 9px 46px 8px rgba(61, 71, 85, 0.12);
+}
+.logoDiv img {
+  width: 100%;
+  max-width: 300px;
+  padding: 25px 0px 45px;
+}
+
+.loginLogoHint{
+  color: white;
+  font-family: Poppins-Light;
+  padding-bottom: 1.5rem;
+}
+.loginHeading {
+  font-family: OpenSans-Bold;
+  color: var(--app-primary-color);
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+.loginHeadingHint {
+  color: var(--app-header-text-color);
+  font-size: 12px;
+}
+.signInBtn {
+  background-color: var(--app-logo-main-color) !important;
+  color: white !important;
+}
+.provedByDiv p {
+  font-size: 12px;
+  color: var(--app-primary-color);
+  margin-top: 3.5rem;
+}
+.provedByDiv .applicationVersion {
+  margin: 8px 0px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.accountNotificationsDiv {
+  position: absolute;
+  width: 100%;
+  top: 6px;
+  padding: 0px 15px;
+}
+
+@media screen and (max-width: 700px) {
+  #loginForm {
+    width: 85%;
+  }
+  .logoDiv img {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 844px) {
+  #loginForm .logoDiv {
+    display: block;
+  }
+}
+
+
+.input-field {
+  position: relative; /* Ensures the icon stays within the input field */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px; /* Adjust as needed */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666; /* Adjust color as needed */
+}
+
+.password-toggle-icon i {
+  font-size: 16px; /* Adjust size as needed */
+}
+
