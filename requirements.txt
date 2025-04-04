@@ -12,3 +12,7 @@ gunicorn==23.0.0  # Required for Railway
 django-tenants==3.7.0
 
 # Add only what you need from below incrementally
+
+# ASGI and WebSocket support
+channels==4.1.0
+daphne==4.1.2
