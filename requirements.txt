@@ -1,1 +1,14 @@
+# Core Django and app requirements
+asgiref==3.8.1
+Django==5.1.5  # Match your settings.py
+django-cors-headers==4.3.1
+djangorestframework==3.15.1
+djangorestframework-simplejwt==5.3.1
+psycopg2-binary==2.9.9
+python-decouple==3.8
+gunicorn==23.0.0  # Required for Railway
 
+# Multi-tenant support (assuming django-tenants is used)
+django-tenants==3.7.0
+
+# Add only what you need from below incrementally
