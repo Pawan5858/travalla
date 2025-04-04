@@ -1,5 +1,5 @@
 //var serverEndPointUrl = "http://localhost:8000" //local instance
-var serverEndPointUrl = "http://https://protective-vitality-travalla.up.railway.app"
+var serverEndPointUrl = "https://https://protective-vitality-travalla.up.railway.app"
 // var serverEndPointUrl = "http://192.168.108.57:8000" //local instance
 // var serverEndPointUrl = "http://192.168.108.10:8001" //test instance
 
