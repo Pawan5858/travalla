@@ -5,13 +5,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'github',
+       'NAME': 'railway',
        'USER': 'postgres',
-       'PASSWORD': 'nimai1234$',
-       'HOST': 'localhost',
+       'PASSWORD': 'bGfSbpiBxjQHduVdTfgHSzlQDLiAmYlk$',
+       'HOST': 'postgres.railway.internal',
        'PORT': '5432',
    }
 }
-
-
-
