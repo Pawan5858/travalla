@@ -14,7 +14,7 @@ def dashboard(request,subdomain=None):
     }
     
     # return render(request, 'dashboard.html', {'pageData': pageData})
-    return sendResponseScreen(request,subdomain, 'dashboard.html', pageData)
+    return sendResponseScreen(request,subdomain, 'admin/dashboard.html', pageData)
 
 
 
@@ -24,7 +24,7 @@ def sendResponseScreen(request, subdomain, pagePath, pageData):
         return render(request, '404.html')
     
     elif not pageData['currentMenu']:
-        return redirect('login')
+        return redirect('admin/login')
   
     else:
         hasPermissionForCurrPage = pageData['currentMenu']['hasPermissionForCurrPage']
