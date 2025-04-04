@@ -1,0 +1,361 @@
+{% extends 'sidemenu_layout.html' %}
+
+{% load static %}
+
+{% block menu_vendor_css %}
+  <link href="/static/css/vendors/bootstrap-datepicker.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block menu_content %}
+<div class="container-fluid">
+  <!-- Page Header Starting -->
+  <div class="row page-header pageHeaderContainer">
+    <div class="col-md col-sm-12">
+      <h5 class="page_heading">Users</h5>
+    </div>
+    <div class="col-md-auto col-sm-12">
+      <a class="mr-1 p-2 toggleSearchBtn" onclick="toggleSearchContainer()">
+        <i class="fa fa-search fs-18 mt-1"></i>
+      </a>
+      <a class="btn primary-app-btn mr-2" onclick="invokeAddRecordBtnAction()">Add User</a>
+    </div>
+  </div>
+  <!-- Page Header Ending -->
+
+  <!-- Search Container Starting -->
+  <div class="row d-none searchContainer">
+    <div class="col-12">
+      <div class="row page-header">
+        <div class="col-md col-sm-12">
+          <h6 class="page_heading">Search Users</h6>
+        </div>
+        <div class="col-md-auto col-sm-12">
+          <a class="btn primary-app-btn mr-2" onclick="invokeAddRecordBtnAction()">Add User</a>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-3 col-sm-6">
+      <input class="form-control table_search_fname" type="text" placeholder="Search by First Name" maxlength="50">
+    </div>
+    <div class="form-group col-md-3 col-sm-6">
+      <input class="form-control table_search_lname" type="text" placeholder="Search by Last Name" maxlength="50">
+    </div>
+
+    <div class="form-group col-md-3 col-sm-6">
+      <input class="form-control table_search_username" type="text" placeholder="Search by Username" maxlength="50">
+    </div>
+    <div class="form-group col-md-3 col-sm-6">
+      <input class="form-control table_search_designation" type="text" placeholder="Search by Designation"
+        maxlength="50">
+    </div>
+
+    <div class="form-group col-md-3 col-sm-6">
+      <div class="input-group search_date">
+        <input type="text" class="form-control date-field table_search_startdate" placeholder="Created Date From"
+          maxlength="10">
+        <div class="input-group-addon">
+          <span class="datePicker"><i class="far fa-calendar-alt"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-3 col-sm-6">
+      <div class="input-group search_date">
+        <input type="text" class="form-control date-field table_search_enddate" placeholder="Created Date To"
+          maxlength="10">
+        <div class="input-group-addon">
+          <span class="datePicker"><i class="far fa-calendar-alt"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-md-3 col-sm-6">
+      <select class="form-control table_search_status">
+        <option value="">Search by Status</option>
+        <option value="AC">Active</option>
+        <option value="NA">Not Active</option>
+      </select>
+    </div>
+
+    <div class="form-group text-right col-md-12 col-sm-6">
+      <button type="button" class="btn secondary-app-btn mr-2 searchContainerSearchBtn"
+        onclick="searchAction()">Search</button>
+      <button type="button" class="btn secondary-app-btn mr-2" onclick="clearSearchAction()">Clear</button>
+      <button type="button" class="btn secondary-app-btn" onclick="toggleSearchContainer()">Hide</button>
+    </div>
+  </div>
+  <!-- Search Container Ending -->
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive div_table">
+        <table class="table table-striped table-hover" id="table_content">
+          <thead class="strip">
+            <tr>
+              <th>S.No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>UserName</th>
+              <th>Designation</th>
+              <th>Created Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div class="modal fade customModal" id="addRecordModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header modalCustomHeader">
+        <h5 class="modal-title recordModalHeading">Add User</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form id="recordForm">
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>First Name : <span class="necessaray-fiedls">*</span></label>
+                <input type="text" name="user_firstname" class="form-control mandatoryLocal" data-label="First Name" placeholder="Enter First Name" maxlength="50"/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Last Name :</label>
+                <input type="text" name="user_lastname" class="form-control" data-label="Last Name" placeholder="Enter Last Name" maxlength="50"/>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Designation :</label>
+                <input type="text" name="user_desg" class="form-control" data-label="Designation"
+                  placeholder="Enter Designation" maxlength="50" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Username :</label>
+                <input type="text" name="username" class="form-control" data-label="Last Name" placeholder="Enter Username" maxlength="50"/>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Email :</label>
+                <input type="text" name="email" class="form-control mandatoryLocal" data-type="email" data-label="Email" placeholder="Enter Email" maxlength="70"/>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Mobile :</label>
+                <input type="text" name="user_mobile" class="form-control mandatoryLocal" data-type="mobile" data-label="Mobile" placeholder="Enter Mobile" maxlength="10"/>
+              </div>
+            </div>
+            
+            <div class="col-md-6 d-none">
+              <div class="form-group">
+                <label>User Type : <span class="necessaray-fiedls">*</span></label>
+                <select name="user_type" class="form-control mandatoryLocal" data-label="Select Type" onchange="typeChanged(this)">
+                  <!-- <option value="" selected>Select Type</option> -->
+                  <option value="ADMN">Admin</option>
+                  <option value="OPTR" selected>Operator</option>
+                </select>
+              </div>
+            </div>
+<!-- 
+            <div class="col-md-6 passwordDiv">
+              <div class="form-group">
+                <label>Password : <span class="necessaray-fiedls">*</span></label>
+                <input type="password" name="password" class="form-control mandatoryLocal" data-label="Password" placeholder="Enter Password" maxlength="15"/>
+              </div>
+            </div> -->
+            <div class="col-md-6 passwordCol">
+              <div class="form-group">
+                <label>Password : <span class="necessaray-fiedls">*</span></label>
+                <input type="text" name="password" class="form-control mandatoryLocal" data-type="password"
+                  data-label="Password" placeholder="Enter Password" maxlength="20" minlength="4" />
+              </div>
+              
+            </div>
+            <small style="padding: 0px 15px 0px!important;">Note : Password must contain at least 6 characters, including upper case, lower case, special symbol and numeric characters</small>
+
+           
+
+          </div>
+
+          
+
+          <!-- Admin Console Options Container Starting -->
+          <div id="admin-console-opts-div" class="row mt-4">
+            <h5 class="col-md-12 fs-18 mb-3"><b>Admin Account Console Options</b></h5>
+            
+
+            <!-- Console Options Starting -->
+            <div class="col-md-12 table-responsive">
+              {% for parentCategoryObj in pageData.adminPreferencesList %}
+             
+                <div class="col-12">
+                  <div class="row">
+                    {% if parentCategoryObj.id != 0 %}
+                      <div class="col-12">
+                        <h6 class="mt-3 mb-3"><b>{{parentCategoryObj.title}}</b></h6>
+                      </div>
+                    {% endif %}
+                    
+                    {% for categoryObj in parentCategoryObj.categories.items  %}
+                
+                      {% if categoryObj.1.id != 0 %}
+                        <div class="col-12">
+                      
+                          {% if parentCategoryObj.1.id != 0 %}
+                            <h6 class="mt-1 mb-2 fs-12"><b>{{categoryObj.1.title}}</b></h6>
+                          {% else %}
+                            <h6 class="mt-3 mb-3"><b>{{categoryObj.1.title}}</b></h6>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      {% for prefObj in categoryObj.1.preferences %}
+                        <div class="col-md-3 col-sm-6">
+                          <p>
+                            <label class="m-0 checkBoxLabel fs-16">
+                              <input type="checkbox" class="preferenceCheckBox" style="cursor: pointer;" data-id={{prefObj.id}}>
+                              <span class="ml-1">{{prefObj.title}}</span>
+                            </label>
+                          </p>
+                        </div>
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <!-- Console Options Ending -->
+
+          </div>
+          <!-- Admin Console Options Container Ending -->
+
+          <!-- Operator Console Options Container Starting -->
+          <div id="operator-console-opts-div" class="row mt-4">
+            <h5 class="col-md-12 fs-18 mb-3"><b>Operator Account Console Options</b></h5>
+
+            <!-- Console Options Starting -->
+            <div class="col-md-12 table-responsive">
+              {% for parentCategoryObj in pageData.operatorPreferencesList %}
+                <div class="col-12">
+                  <div class="row">
+                    {% if parentCategoryObj.id != 0 %}
+                      <div class="col-12">
+                        <h6 class="mt-3 mb-3"><b>{{parentCategoryObj.title}}</b></h6>
+                      </div>
+                    {% endif %}
+                    {% for categoryObj in parentCategoryObj.categories.items %}
+                      {% if categoryObj.1.id != 0 %}
+                        <div class="col-12">
+                          {% if parentCategoryObj.1.id != 0 %}
+                            <h6 class="mt-1 mb-2 fs-12"><b>{{categoryObj.1.title}}</b></h6>
+                          {% else %}
+                            <h6 class="mt-3 mb-3"><b>{{categoryObj.1.title}}</b></h6>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      {% for prefObj in categoryObj.1.preferences %}
+                        <div class="col-md-3 col-sm-6">
+                          <p>
+                            <label class="m-0 checkBoxLabel fs-16">
+                              <input type="checkbox" class="preferenceCheckBox" data-id={{prefObj.id}}>
+                              <span class="ml-1">{{prefObj.1.title}}</span>
+                            </label>
+                          </p>
+                        </div>
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <!-- Console Options Ending -->
+
+          </div>
+          <!-- Operator Console Options Container Ending -->
+
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success addRecordBtn" onclick="addRecordAction()">Add</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade customModal" id="resetPwdModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header modalCustomHeader">
+        <h5 class="modal-title">Reset Password</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form id="resetPwdForm">
+
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Password : <span class="necessaray-fiedls">*</span></label>
+                <input type="text" name="password" class="form-control mandatoryLocal" data-type="password"
+                  data-label="Password" placeholder="Enter Password" maxlength="20" minlength="4" />
+              </div>
+            </div>
+            <small class="p-3" >Note : Password must contain at least 6 characters, including upper case, lower case, special symbol and numeric characters</small>
+          </div>
+
+        </form>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success resetPwdBtn" onclick="resetPasswordAction()">Reset</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block menu_vendor_scripts %}
+<script src="/static/js/vendors/bootstrap-datepicker.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block menu_scripts %}
+
+<script src="{% static 'js/admin/approvals.js' %}"></script>
+{% endblock %}
