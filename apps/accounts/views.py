@@ -97,10 +97,13 @@ def showFirebaseJS(request):
 def login(request):
     userObj = SessionHandler().verifyMainUserSession(request, sessionFrom='cookies')
     if userObj:
-        return redirect('dashboard')
+        return redirect('admin/dashboard')
     else:
         # Assuming you have a template named 'login.html'
-        return render(request, 'login.html')
+        return render(request, 'admin/login.html', {
+        'recaptcha_site_key': settings.RECAPTCHA_SITE_KEY
+        })
+        # return render(request, 'login.html')
 
 
 def get_tokens_for_user(user):
