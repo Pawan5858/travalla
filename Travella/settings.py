@@ -116,6 +116,7 @@ USE_TZ = True  # Enable timezone support
 # Static and media file settings
 STATIC_URL = '/static/'  # URL prefix for static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Static files directory
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Add this
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Whitenoise
 
 MEDIA_URL = '/media/'  # URL prefix for media files
