@@ -43,6 +43,10 @@ urlpatterns = [
     path('clientAdmin/',include('apps.users.urls'),name='users'),
     path('api/v1/',include('apps.users.urls'),name='users'),
 
+    # masterentry
+    path('clientAdmin/',include('apps.masterentry.urls'),name='masterentry'),
+    path('api/v1/',include('apps.masterentry.urls'),name='masterentry'),
+
 ]
 
 if settings.DEBUG:
