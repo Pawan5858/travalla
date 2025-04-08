@@ -90,8 +90,8 @@ class masterEntryServices(object):
 
             return Response({
                 'messages': "Get documents types successfully.",  # Fixed typo here
-                'data': serializer.data.value,
-                'status': ResStatus.success
+                'data': serializer.data,
+                'status': ResStatus.success.value
             }, status=status.HTTP_200_OK)
 
         except Exception as err:
@@ -112,8 +112,8 @@ class masterEntryServices(object):
 
             return Response({
                 'messages': "Get documents types successfully.",  # Fixed typo here
-                'data': serializer.data.value,
-                'status': ResStatus.success
+                'data': serializer.data,
+                'status': ResStatus.success.value
             }, status=status.HTTP_200_OK)
 
         except Exception as err:
