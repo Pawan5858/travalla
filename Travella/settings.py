@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.appinstallations',
     'apps.reports',
+    'apps.masterentry'
 ]
 
 # Middleware configuration
