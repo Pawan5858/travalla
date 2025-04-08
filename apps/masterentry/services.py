@@ -83,8 +83,7 @@ class masterEntryServices(object):
             
     def get_document_types(self):
         try:
-            import pdb;
-            pdb.set_trace()
+            
             documentstypes = DocumentTypes.objects.all()
             serializer=DocumentTypesSerializer(documentstypes, many=True)
             
