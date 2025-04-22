@@ -21,7 +21,7 @@ def approvals(request,subdomain=None):
         'admin_console': 'MAIN_ADMIN' ,
     }
     
-    return sendResponseScreen(request, subdomain, '.html', pageData)
+    return sendResponseScreen(request, subdomain, 'approvals.html', pageData)
 
 def guides(request,subdomain=None):
     side_menu = SideMenu()
@@ -32,6 +32,19 @@ def guides(request,subdomain=None):
         'admin_console': 'MAIN_ADMIN' ,
     }
     return sendResponseScreen(request, subdomain, 'guides.html', pageData)
+
+
+def registered_guides(request,subdomain=None):
+    side_menu = SideMenu()
+    menu_list = side_menu.currentMenu(request)
+    
+    pageData = {
+        'page_link': 'guides',
+        'currentMenu': menu_list,
+        'admin_console': 'MAIN_ADMIN' ,
+    }
+    
+    return sendResponseScreen(request, subdomain, 'admin/register_guides.html', pageData)
 
 
 def sendResponseScreen(request, subdomain, pagePath, pageData):
@@ -75,26 +88,26 @@ class guidesAPIViewContoller(APIView):
     def post(self, request, subRoute):
         try:
             payload =request.data
-    
+            
             if subRoute=='registration':
                 if not (payload.get("name") and payload.get("mobile") and 
                     payload.get("email")):
                     self.log.error("Required fields must not be empty for registration.")
                     return Response("Required fields must not be empty for registration.", status=status.HTTP_400_BAD_REQUEST)
-                return self.service.registerGuide(request)
+                return self.service.registerGuideUser(request)
             
             elif subRoute=='login':
                 if not (payload.get("phone") and payload.get("pwd") and 
                     payload.get("email")):
                     self.log.error("Required fields must not be empty for login.")
                     return Response("Required fields must not be empty for login.", status=status.HTTP_400_BAD_REQUEST)
-                
                 return self.service.loginGuide(request)
             
             elif subRoute=='approved' and request.query.datatable == 'true':
                 return self.service.approved_guides_table_data(request)
             
-            elif subRoute=='notApproverd' and request.query.datatable == 'true':
+            # elif subRoute=='notApproverd' and request.query.datatable == 'true':
+            elif subRoute=='notApproverd':
                 return self.service.un_approved_guides_table_data(request)
                 
             
