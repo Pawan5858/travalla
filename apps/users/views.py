@@ -12,6 +12,18 @@ import logging.config
 from .services import *
 from apps.accounts.side_menu import SideMenu
 
+
+def users(request,subdomain=None):
+    side_menu = SideMenu()
+    menu_list = side_menu.currentMenu(request)
+    pageData = {
+        'page_link': 'customers',
+        'currentMenu': menu_list,
+        'admin_console': 'MAIN_ADMIN' ,
+    }
+    
+    return sendResponseScreen(request, subdomain, 'admin/customers.html', pageData)
+
 def approvals(request,subdomain=None):
     side_menu = SideMenu()
     menu_list = side_menu.currentMenu(request)
