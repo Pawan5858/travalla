@@ -79,8 +79,9 @@ class guidesServices(object):
             'gude_mobile': payload['mobile'],
             'gude_password_hash': hashed_password,
             'gude_profile_image': image_filename,
-            'gude_type': payload['types'],
-            'gude_has_car' : payload['car']
+            'gude_type': GuideTypes.objects.get(gudt_id=payload['types']),
+            'gude_has_car' : payload['car'],
+            "gude_experiance" :payload['experiance']
             }
             
             # Create new traveler guide
@@ -88,6 +89,7 @@ class guidesServices(object):
             
             # guide languages
             languages =json.loads(payload.get('languages', '[]')) 
+            
             for lang in languages:
                 lang = Languages.objects.get(lang_id=lang)
                 GuideLanguages.objects.create(
@@ -95,7 +97,6 @@ class guidesServices(object):
                     gdln_lang = lang
                 )
                 
-            
             
             # guide skils
             skills =json.loads(payload.get('skills', '[]')) 
@@ -107,6 +108,38 @@ class guidesServices(object):
                 )
             
             
+            # guide documents
+            documents = json.loads(payload.get('documents', '[]')) 
+            
+            for doc in documents:
+                file =request.FILES.get(doc['file'])
+                if file.name == '':
+                    transaction.set_rollback(True)
+                    return Response({
+                        'status': 'error',
+                        'message': 'Invalid document file provided.'
+                    }, status=status.HTTP_400_BAD_REQUEST)
+
+                # Validate document type exists in DocumentTypes
+                if not DocumentTypes.objects.filter(doct_id=doc['type']).exists():
+                    
+                    transaction.set_rollback(True)
+                    return Response({
+                        'status': 'error',
+                        'message': f'Invalid document type'
+                    }, status=status.HTTP_400_BAD_REQUEST)
+
+                # Save document file
+                doc_filename = Utility().generateSecureFileNameAndSave('guide_documents', file)
+ 
+                # Create GuideDocuments entry
+                doc_type = DocumentTypes.objects.get(doct_id=doc["type"])
+                GuideDocuments.objects.create(
+                    gddc_gude=guide_users,
+                    gddc_doct=doc_type,
+                    gddc_doc_file=doc_filename
+                )
+            
             customer_details = {
                     'name': payload['name'],
                     'mobile': payload.get('mobile'),
@@ -117,9 +150,9 @@ class guidesServices(object):
             email_subject = 'Registration Confirmation'
             
             email_body = render_to_string("customer_registration_template.html", {
-                'name': guide_users['gude_full_name'],
-                'email': guide_users('gude_email'),
-                'mobile': guide_users['gude_mobile'],
+                'name': guide_users.gude_full_name,  # Use dot notation
+                'email': guide_users.gude_email,
+                'mobile': guide_users.gude_mobile,
                 'pwd': password
             })
 
@@ -139,8 +172,7 @@ class guidesServices(object):
                 'message': 'Unable to registered . Please try again.',
                 'devMsg': str(err)
             }, status=status.HTTP_400_BAD_REQUEST)
-            
-            
+             
     @transaction.atomic
     def loginGuide(self, payload):
         try:
@@ -261,6 +293,8 @@ class guidesServices(object):
     @transaction.atomic
     def un_approved_guides_table_data(self, request):
         try:
+            # import pdb;
+            # pdb.set_trace()
             draw = int(request.data.get('draw', 1))
             start = int(request.data.get('start', 0))
             length = int(request.data.get('length', 10))
@@ -277,7 +311,7 @@ class guidesServices(object):
             filter_gude_lo_date_to = request.data.get('columns[5][search][value]')
             filter_gude_email = request.data.get('columns[6][search][value]')
 
-            queryset = Guides.objects.filter(gude_is_verified='NYA').all()
+            queryset = Guides.objects.filter(gude_is_verified='YTA').all()
 
             # Apply filters
             if filter_gude_id:
