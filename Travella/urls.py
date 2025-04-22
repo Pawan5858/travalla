@@ -47,6 +47,11 @@ urlpatterns = [
     path('clientAdmin/',include('apps.masterentry.urls'),name='masterentry'),
     path('api/v1/',include('apps.masterentry.urls'),name='masterentry'),
 
+
+    # guides
+    path('clientAdmin/',include('apps.guides.urls'),name='guides'),
+    path('api/v1/',include('apps.guides.urls'),name='guides'),
+
 ]
 
 if settings.DEBUG:
