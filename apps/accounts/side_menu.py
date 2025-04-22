@@ -35,6 +35,16 @@ class SideMenu:
                         ]
                     },
                     {
+                        'code': 'CUSTOMERS',
+                        'name': 'Customers',
+                        'link': 'customers' 
+                    },
+                    {
+                        'code': 'REGISTEREDGUIDES',
+                        'name': 'Registered Guides',
+                        'link': 'registerguides' 
+                    },
+                    {
                         'code': 'GUIDES',
                         'name': 'Guides',
                         'link': 'guides' 
@@ -122,6 +132,16 @@ class SideMenu:
                                 'link': 'importantalerts'
                             }
                         ]
+                    },
+                    {
+                        'code': 'CUSTOMERS',
+                        'name': 'Customers',
+                        'link': 'customers' 
+                    },
+                    {
+                        'code': 'REGISTEREDGUIDES',
+                        'name': 'Registered Guides',
+                        'link': 'registerguides' 
                     },
                     {
                         'code': 'GUIDES',
