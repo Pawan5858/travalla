@@ -49,8 +49,8 @@ urlpatterns = [
 
 
     # guides
-    path('clientAdmin/',include('apps.guides.urls'),name='guides'),
-    path('api/v1/',include('apps.guides.urls'),name='guides'),
+    # path('clientAdmin/',include('apps.guides.urls'),name='guides'),
+    # path('api/v1/',include('apps.guides.urls'),name='guides'),
 
 ]
 
