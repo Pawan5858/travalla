@@ -372,7 +372,7 @@ class userServices(object):
             decrypted_pwd = Utility().decryptRSAString(payload.get('password'))
             
             # Check password
-            if not check_password(decrypted_pwd, user.trvl_password):
+            if not check_password(decrypted_pwd, user.cusr_password_hash):
                 return Response({'status': 'error', 'message': "Invalid Password."}, status=status.HTTP_401_UNAUTHORIZED)
             
             user.cusr_fcm_token = payload.get("fcm_token")
