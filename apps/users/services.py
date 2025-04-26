@@ -360,7 +360,7 @@ class userServices(object):
     @transaction.atomic
     def loginUser(self, payload):
         try:
-            user = Customerusers.objects.filter(trvl_email=payload.get("username")).first()
+            user = Customerusers.objects.filter(cusr_email=payload.get("username")).first()
             if not user:
                 user = Customerusers.objects.filter(cusr_mobile=payload.get("username")).first()
 
