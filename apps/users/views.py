@@ -99,7 +99,7 @@ class usersAPIViewContoller(APIView):
                     payload.get("fcm_token")):
                     self.log.error("Required fields must not be empty for login.")
                     return Response("Required fields must not be empty for login.", status=status.HTTP_400_BAD_REQUEST)
-                return self.service.loginUser(request)
+                return self.service.loginUser(payload)
             elif subRoute=='approved' and request.GET.get('datatable') == 'true':
                 return self.service.register_customers_table_data(request)
                 
