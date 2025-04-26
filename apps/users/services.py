@@ -37,6 +37,22 @@ def get_tokens_for_user(user):
         'refresh': refresh_token,
     }
 
+
+def get_tokens_for_customer(user):
+    
+    refresh = RefreshToken()
+    refresh['id'] = user['cusr_id']
+    refresh['mobile'] = user['cusr_mobile']  # Include any additional user information you need
+    refresh['email'] = user['cusr_email']
+    
+    access_token = refresh.access_token
+    refresh_token = str(refresh)
+
+    return {
+        'access': str(access_token),
+        'refresh': refresh_token,
+    }
+
 class userServices(object):
     def __init__(self):
         self.utility = Utility()
@@ -388,7 +404,7 @@ class userServices(object):
                 'cusr_mobile': serializer.data['cusr_mobile']
             }
             
-            jwt_token = get_tokens_for_user(user_data)
+            jwt_token = get_tokens_for_customer(user_data)
             
             return Response({
                 'status': 'success',
