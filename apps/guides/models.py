@@ -15,7 +15,7 @@ class Guides(models.Model):
     gude_is_verified = models.CharField(max_length=3,default='YTA', null=False)
     gude_fcm_token = models.CharField(max_length=500, null=False)
     gude_created_at = models.DateTimeField(auto_now_add=True)
-    gude_created_at1 = models.DateTimeField(auto_now_add=True)
+   
     class Meta:
         db_table = 'guides'
         
