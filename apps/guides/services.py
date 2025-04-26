@@ -47,7 +47,7 @@ class guidesServices(object):
             payload =request.data
             
             gude_image =request.FILES.get('image')
-            
+            image_filename =None
             if gude_image:
                 if gude_image.name == '':
                     transaction.set_rollback(True)
