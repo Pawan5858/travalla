@@ -100,7 +100,7 @@ class guidesAPIViewContoller(APIView):
                 if not (payload.get("username") and payload.get("password")):
                     self.log.error("Required fields must not be empty for login.")
                     return Response("Required fields must not be empty for login.", status=status.HTTP_400_BAD_REQUEST)
-                return self.service.loginGuide(request)
+                return self.service.loginGuide(payload)
             
             elif subRoute=='approved' and request.query.datatable == 'true':
                 return self.service.approved_guides_table_data(request)
