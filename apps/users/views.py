@@ -95,8 +95,8 @@ class usersAPIViewContoller(APIView):
                 return self.service.resendOtp(payload)
             
             elif subRoute=='login':
-                if not (payload.get("email") and payload.get("password") and 
-                    payload.get("email")):
+                if not (payload.get("username") and payload.get("password") and 
+                    payload.get("fcm_token")):
                     self.log.error("Required fields must not be empty for login.")
                     return Response("Required fields must not be empty for login.", status=status.HTTP_400_BAD_REQUEST)
                 return self.service.loginUser(request)
