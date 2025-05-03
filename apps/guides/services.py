@@ -291,6 +291,28 @@ class guidesServices(object):
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
     @transaction.atomic
+    def change_apr_status(self, payload):
+        try:
+            # Get customer
+            guide_obj = Guides.objects.get(gude_id=payload['id'])  # Assuming 'gude_id' is correct in your model
+
+            guide_obj.gude_is_verified = 'APR'  # Fixed assignment spacing
+            guide_obj.save()
+
+            return Response({
+                'status': 'success',
+                'message': 'Status Update successfully.'
+            }, status=status.HTTP_200_OK)
+
+        except Exception as err:
+            transaction.set_rollback(True)
+            logger.error(f"Error in resending OTP: {str(err)}")
+            return Response({
+                'status': 'error',
+                'message': 'Unable to Update status. Please try again.',
+                'devMsg': str(err)
+            }, status=status.HTTP_400_BAD_REQUEST)        
+    @transaction.atomic
     def un_approved_guides_table_data(self, request):
         try:
             # import pdb;
