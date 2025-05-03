@@ -28,7 +28,7 @@ class GuidesSerializer(serializers.ModelSerializer):
     language = GuideLanguagesSerializer(many=True,read_only=True,source='guidelanguages_set')
     skills = GuideSkillsSerializer(many=True,read_only=True,source='guideskills_set')
     documents = GuideDocumentsSerializer(many=True,read_only=True,source='guidedocuments_set')
-    gude_type = GuideTypesSerializer(read_only=True, source='gude_type')
+    gude_type = GuideTypesSerializer(read_only=True)
     class Meta:
         model = Guides
         fields = '__all__'
