@@ -3,7 +3,7 @@ var guidesData = null
 
 
 $(function () {
-
+  console.log("dateformat_type.DisplayDate_Small", dateformat_type.DisplayDate_Small)
   formSubmit = true;
   $('.search_date .date-field').datepicker({
     format: dateformat_type.DisplayDate_Small,
@@ -11,7 +11,10 @@ $(function () {
   }).on('changeDate', function (e) {
     $(this).parent().find('.datePicker i').removeClass('fa-calendar-alt').addClass('fa-calendar-times');
   });
+
   fill_dataTable();
+
+
 })
 
 
@@ -131,6 +134,36 @@ $('#table_content tbody').on('click', 'tr td:nth-child(n+1):nth-last-child(n+3)'
   recordEditAction(this, forView = true);
 });
 
+
+function userApproveAction(ele) {
+
+  conformationDialog('Confirmation', 'Are you sure to approve this user.', 'Cancel', 'Approve', function (conformation) {
+    if (!conformation) return;
+	
+    var payload = {
+      id: $(ele).closest('tr').data('id'),
+      status: userStatusEnum.APR
+    }
+
+    $.ajax({
+      url: baseUrl + 'guides/change_apr_status/',
+      type: "PATCH",
+      contentType: "application/json",
+      dataType: 'json',
+      data: JSON.stringify(payload),
+      success: function (result) {
+        if (apiResStatus(result.status)) {
+          $('#table_content').DataTable().draw()
+          show_StatusModal(result.message, result.status)
+        } else {
+          show_StatusModal(result.message, result.status)
+        }
+      },
+      error: errorCallBack
+    });
+
+  })
+}
 
 function invokeResetPasswordBtnAction(ele) {
 
