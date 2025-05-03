@@ -1603,6 +1603,17 @@ function show_StatusModal(message, status) {
  *       Conformation Dialog Callback START
  *********************************************/
 
+
+function conformationDialog(title, body, cancelText, okText, callback) {
+  $("#modal_conformation .m_title").text(title);
+  $("#modal_conformation .m_message").text(body);
+  $("#modal_conformation .modal-footer .btn_no").text(isInvalidString(cancelText) ? 'Cancel' : cancelText);
+  $("#modal_conformation .modal-footer .btn_yes").text(isInvalidString(okText) ? 'Ok' : okText);
+  $("#modal_conformation.callbckFn_storg").data('fn', callback); // appending callback function
+
+  $('#modal_conformation').modal('open');
+}
+
 function show_conformationModal(payload, callback) {
 
     $(".conformationmassagetext").text(payload.message)
