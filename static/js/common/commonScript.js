@@ -1,8 +1,7 @@
 //var serverEndPointUrl = "http://localhost:8000" //local instance
-var serverEndPointUrl = "https://protective-vitality-travalla.up.railway.app"
 // var serverEndPointUrl = "http://192.168.108.57:8000" //local instance
 // var serverEndPointUrl = "http://192.168.108.10:8001" //test instance
-
+var serverEndPointUrl = "https://protective-vitality-travalla.up.railway.app"
 // var serverEndPointUrl = "https://swc.singledeck.in" // test instance
 
 
@@ -1158,6 +1157,12 @@ var agencyCriteriaEnum = {
     PRCAT: 'Product Category'
 }
 
+var userStatusEnum = {
+  APR: 'APR',
+  NYA: 'NYA',
+  DEL: 'DEL'
+}
+
 var avlFontsList = [
     "Lato-Bold",
     "Lato-Semibold",
@@ -1200,6 +1205,8 @@ var avlFontsList = [
 
     "VarelaRound-Regular"
 ]
+
+
 
 var iconsList = ['FB', 'Twitter', 'Instagram', 'Linkedin', 'Youtube', 'Email', 'Phone', 'Location',
     'Clock', 'AppStore', 'PlayStore'
@@ -1602,17 +1609,6 @@ function show_StatusModal(message, status) {
 /**********************************************
  *       Conformation Dialog Callback START
  *********************************************/
-
-
-function conformationDialog(title, body, cancelText, okText, callback) {
-  $("#modal_conformation .m_title").text(title);
-  $("#modal_conformation .m_message").text(body);
-  $("#modal_conformation .modal-footer .btn_no").text(isInvalidString(cancelText) ? 'Cancel' : cancelText);
-  $("#modal_conformation .modal-footer .btn_yes").text(isInvalidString(okText) ? 'Ok' : okText);
-  $("#modal_conformation.callbckFn_storg").data('fn', callback); // appending callback function
-
-  $('#modal_conformation').modal('open');
-}
 
 function show_conformationModal(payload, callback) {
 
@@ -2130,4 +2126,43 @@ function showCartsCountWidget() {
   } else {
       jQuery(widgetContainer).removeClass('d-inline');
   }
+}
+
+
+/**********************************************
+*   Conformation Dialog Callback START
+*********************************************/
+/* USAGE
+  conformationDialog('Confirmation', 'Are you sure to logout.', 'No', 'Yes', function (conformation) {
+    if (!conformation) return;
+  })
+*/
+function conformationDialog(title, body, cancelText, okText, callback) {
+  $("#modal_conformation .m_title").text(title);
+  $("#modal_conformation .m_message").text(body);
+  $("#modal_conformation .modal-footer .btn_no").text(isInvalidString(cancelText) ? 'Cancel' : cancelText);
+  $("#modal_conformation .modal-footer .btn_yes").text(isInvalidString(okText) ? 'Ok' : okText);
+  $("#modal_conformation.callbckFn_storg").data('fn', callback); // appending callback function
+
+  $('#modal_conformation').modal('open');
+}
+
+// Conformation Dialog Callback Click events
+$(document).on("click", "#modal_conformation .btn_no", function () {
+  $('#modal_conformation .m_content').html('')
+  $('#modal_conformation .m_content').addClass('d-none')
+  ($(this).closest('.callbckFn_storg').data('fn'))(false);
+});
+$(document).on("click", "#modal_conformation .btn_yes", function () {
+  if($('#modal_conformation .m_content').hasClass('d-none')) {
+    $('#modal_conformation .m_content').html('')
+    $('#modal_conformation .m_content').addClass('d-none')
+    $('#modal_conformation').modal('close');
+  }
+  ($(this).closest('.callbckFn_storg').data('fn'))(true);
+});
+function closeConformationDialog() {
+  $('#modal_conformation .m_content').html('')
+  $('#modal_conformation .m_content').addClass('d-none')
+  $('#modal_conformation').modal('close');
 }
