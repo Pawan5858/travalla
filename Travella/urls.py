@@ -52,6 +52,11 @@ urlpatterns = [
     path('clientAdmin/',include('apps.guides.urls'),name='guides'),
     path('api/v1/',include('apps.guides.urls'),name='guides'),
 
+
+    # app installation
+    path('clientAdmin/',include('apps.appinstallations.urls'),name='appinstallations'),
+    path('api/v1/',include('apps.appinstallations.urls'),name='appinstallations'),
+
 ]
 
 if settings.DEBUG:
