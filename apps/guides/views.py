@@ -141,7 +141,8 @@ class guidesAPIViewContoller(APIView):
             payload = request.data
             if subRoute == 'change_status':
                 return self.service.change_account_status(payload, partial=True)  # Ensure partial updates
-                
+            elif subRoute == 'change_apr_status':
+                return self.service.change_apr_status(payload)  # Ensure partial updates      
         except Exception as err:
             logger.error('ordersr updateRazorpayPayment exception: Required fields are empty: %s', 
                         str(err), exc_info=True)
