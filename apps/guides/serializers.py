@@ -12,13 +12,13 @@ class GuideLanguagesSerializer(serializers.ModelSerializer):
         
         
 class GuideSkillsSerializer(serializers.ModelSerializer):
-    gdsk_skil =SkillsSerializer(read_only=True, source='gdsk_skil')
+    gdsk_skil =SkillsSerializer(read_only=True)
     class Meta:
         model = GuideSkills
         fields = '__all__'
         
 class GuideDocumentsSerializer(serializers.ModelSerializer):
-    gddc_doct = DocumentTypesSerializer(read_only=True, source='gddc_doct')
+    gddc_doct = DocumentTypesSerializer(read_only=True)
     class Meta:
         model = GuideDocuments
         fields = '__all__'
