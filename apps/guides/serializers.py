@@ -4,7 +4,7 @@ from .models import *
 from apps.masterentry.serializers import *
 
 class GuideLanguagesSerializer(serializers.ModelSerializer):
-    gdln_lang = LanguagesSerializer(read_only=True, source='gdln_lang')
+    gdln_lang = LanguagesSerializer(read_only=True)
     class Meta:
         model = GuideLanguages
         fields = '__all__'
