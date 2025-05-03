@@ -31,7 +31,7 @@ def guides(request,subdomain=None):
         'currentMenu': menu_list,
         'admin_console': 'MAIN_ADMIN' ,
     }
-    return sendResponseScreen(request, subdomain, 'guides.html', pageData)
+    return sendResponseScreen(request, subdomain, 'admin/guides.html', pageData)
 
 
 def registered_guides(request,subdomain=None):
