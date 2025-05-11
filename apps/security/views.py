@@ -35,7 +35,7 @@ def users(request,subdomain=None):
     }
 
     # return render(request, 'logistic_operators/logistic_operators.html', {'pageData': pageData})
-    return sendResponseScreen(request, subdomain, 'users.html', pageData)
+    return sendResponseScreen(request, subdomain, 'admin/users.html', pageData)
 
 
 def permissions(request,subdomain=None):
