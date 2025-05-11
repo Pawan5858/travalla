@@ -71,6 +71,20 @@ class masterEntryAPIViewContoller(APIView):
             return Response({'status': ResStatus.error.value, 
                             'message': 'Payment failed with error ' + str(err)}, 
                             status=status.HTTP_400_BAD_REQUEST) 
+    def destinations(self):
+        try:
+            sectors = Destination.objects.all()
+            serializer = DestinationSerializer(sectors, many=True)
+
+            return serializer.data
+        
+        except Exception as err:
+            # Return a response with error message and details
+            return Response({
+                'status': 'error',  # Assuming ResStatus.error.value gives the status
+                'message': 'Unable to retrieve destinations successfully.',
+                'devMsg': str(err)
+            }, status=status.HTTP_400_BAD_REQUEST)   
             
     # def fileTypes(self):
     #     try:
