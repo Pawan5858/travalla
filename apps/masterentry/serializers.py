@@ -21,3 +21,9 @@ class GuideTypesSerializer(serializers.ModelSerializer):
     class Meta:
         model = GuideTypes
         fields = '__all__'
+
+
+class DestinationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Destination
+        fields = '__all__'
