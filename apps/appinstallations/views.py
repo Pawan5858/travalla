@@ -24,6 +24,50 @@ def appInstallations(request,subdomain=None):
     # return render(request, 'dashboard.html', {'pageData': pageData})
     return sendResponseScreen(request,subdomain, 'admin/app_installations.html', pageData)
 
+def importantalerts(request,subdomain=None):
+    side_menu = SideMenu()
+    menu_list = side_menu.currentMenu(request)
+
+    pageData = {
+        'page_link': 'appinstallations',
+        'currentMenu': menu_list,
+        'admin_console': 'MAIN_ADMIN'  # Replace with your logic
+    }
+    
+    # return render(request, 'dashboard.html', {'pageData': pageData})
+    return sendResponseScreen(request,subdomain, 'admin/importantalerts.html', pageData)
+
+
+def travellagency(request,subdomain=None):
+    side_menu = SideMenu()
+    menu_list = side_menu.currentMenu(request)
+
+    pageData = {
+        'page_link': 'appinstallations',
+        'currentMenu': menu_list,
+        'admin_console': 'MAIN_ADMIN'  # Replace with your logic
+    }
+    
+    # return render(request, 'dashboard.html', {'pageData': pageData})
+    return sendResponseScreen(request,subdomain, 'admin/travellagency.html', pageData)
+
+
+def dailyreports(request,subdomain=None):
+    side_menu = SideMenu()
+    menu_list = side_menu.currentMenu(request)
+
+    pageData = {
+        'page_link': 'appinstallations',
+        'currentMenu': menu_list,
+        'admin_console': 'MAIN_ADMIN'  # Replace with your logic
+    }
+    
+    # return render(request, 'dashboard.html', {'pageData': pageData})
+    return sendResponseScreen(request,subdomain, 'admin/dailyreports.html', pageData)
+
+
+
+
 
 
 def sendResponseScreen(request, subdomain, pagePath, pageData):
