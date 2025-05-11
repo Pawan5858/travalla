@@ -57,6 +57,11 @@ urlpatterns = [
     path('clientAdmin/',include('apps.appinstallations.urls'),name='appinstallations'),
     path('api/v1/',include('apps.appinstallations.urls'),name='appinstallations'),
 
+    # Tour Packages
+    path('clientAdmin/',include('apps.tour_packages.urls'),name='tour_packages'),
+    path('api/v1/',include('apps.tour_packages.urls'),name='tour_packages'),
+
+
 ]
 
 if settings.DEBUG:
