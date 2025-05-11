@@ -38,6 +38,18 @@ class GuideTypes(models.Model):
     gudt_status = models.CharField(max_length=2, choices=[('AC', 'Active'), ('NA', 'Not Active')], default='AC')
     class Meta:
         db_table = 'guide_types'
+
+
+
+class Destination(models.Model):
+    dest_id = models.AutoField(primary_key=True)
+    dest_name = models.CharField(max_length=100, null=False, blank=False)
+    dest_country = models.CharField(max_length=50, null=True, blank=True)
+    dest_state = models.CharField(max_length=50, null=True, blank=True)
+    dest_description = models.TextField(null=True, blank=True)
+
+    class Meta:
+        db_table = 'destinations' 
         
         
         
