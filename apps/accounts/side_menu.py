@@ -55,6 +55,18 @@ class SideMenu:
                         'link': 'travellagency' 
                     },
                     {
+                        'code': 'MASTERENTRY',
+                        'name': 'Master Entry',
+                        'link': 'masterEntry',
+                        'subMenu': [
+                            {
+                                'code': 'TOURPACKAGES',
+                                'name': 'Tour Packages',
+                                'link': 'tourpackages'
+                            }
+                            ]
+                    },
+                    {
                         'code': 'PAYMENTS',
                         'name': 'Payments',
                         'link': 'payments',
@@ -152,6 +164,18 @@ class SideMenu:
                         'code': 'TRAVELLAGENCY',
                         'name': 'Travell Agency',
                         'link': 'travellagency' 
+                    },
+                    {
+                        'code': 'MASTERENTRY',
+                        'name': 'Master Entry',
+                        'link': 'masterEntry',
+                        'subMenu': [
+                            {
+                                'code': 'TOURPACKAGES',
+                                'name': 'Tour Packages',
+                                'link': 'tourpackages'
+                            }
+                            ]
                     },
                     {
                         'code': 'PAYMENTS',
