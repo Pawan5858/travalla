@@ -32,8 +32,8 @@ class tourPackagesServices(object):
     @transaction.atomic
     def add_tour_package(self, request):
         try:
-            import pdb;
-            pdb.set_trace()
+            # import pdb;
+            # pdb.set_trace()
             
             payload =request.data
             image =request.FILES.get('image')
